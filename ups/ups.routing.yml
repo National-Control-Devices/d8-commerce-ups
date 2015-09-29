@@ -1,0 +1,6 @@
+ups.settings:
+  path: 'admin/commerce/config/ups/edit' 
+  defaults:
+    _form: '\Drupal\ups\Form\UPSSettingsForm'
+  requirements:
+    _permission: 'configure quotes'

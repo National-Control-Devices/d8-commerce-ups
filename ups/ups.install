@@ -1,0 +1,103 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the ups module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function ups_schema() {
+  $schema = array();
+
+  $schema['ups_products'] = array(
+    'description' => 'Stores product information for UPS shipping quotes.',
+    'fields' => array(
+      'vid' => array(
+        'description' => 'The {products}.vid.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'nid' => array(
+        'description' => 'The {products}.nid.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'pkg_type' => array(
+        'description' => 'The type of package in which the product will be shipped.',
+        'type' => 'varchar',
+        'length' => 2,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+    ),
+    'primary key' => array('vid'),
+    'foreign keys' => array(
+      'uc_products' => array(
+        'table' => 'uc_products',
+        'columns' => array(
+          'nid' => 'nid',
+          'vid' => 'vid',
+        ),
+      ),
+    ),
+  );
+
+  return $schema;
+}
+
+/**
+ * Implements hook_update_last_removed().
+ */
+function ups_update_last_removed() {
+  return 7301;
+}
+
+/**
+ * @addtogroup updates-7.x-to-8.x
+ * @{
+ */
+
+/**
+ * Converts ups system variables to config.
+ *
+ * @ingroup config_upgrade
+ */
+function ups_update_8000() {
+
+  // Update most system variables to config settings.
+  update_variables_to_config(
+    'ups.settings',
+    array(
+      'ups_access_license' => 'access_license',
+      'ups_shipper_number' => 'shipper_number',
+      'ups_user_id' => 'user_id',
+      'ups_password' => 'password',
+      'ups_connection_address' => 'connection_address',
+      'ups_services' => 'services',
+      'ups_pickup_type' => 'pickup_type',
+      'ups_package_type' => 'package_type',
+      'ups_classification' => 'classification',
+      'ups_negotiated_rates' => 'negotiated_rates',
+      'ups_all_in_one' => 'all_in_one',
+      'ups_unit_system' => 'unit_system',
+      'ups_insurance' => 'insurance',
+      'ups_rate_markup' => 'rate_markup',
+      'ups_rate_markup_type' => 'rate_markup_type',
+      'ups_weight_markup' => 'weight_markup',
+      'ups_weight_markup_type' => 'weight_markup_type',
+      'ups_residential_quotes' => 'residential_quotes',
+      'ups_label_lifetime' => 'label_lifetime',
+    )
+  );
+}
+
+/**
+ * @} End of "defgroup updates-7.x-to-8.x".
+ * The next series of updates should start at 9000.
+ */

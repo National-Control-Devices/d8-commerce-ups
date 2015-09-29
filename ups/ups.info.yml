@@ -1,0 +1,13 @@
+name: UPS
+type: module
+description: 'Integrates UPS with Commerce Shipping to rate selected UPS services during checkout.'
+package: Commerce
+# core: 8.x
+dependencies:
+  - block
+  - node
+  - commerce
+
+version: '1.0'
+core: '8.x'
+project: 'commerce_ups'

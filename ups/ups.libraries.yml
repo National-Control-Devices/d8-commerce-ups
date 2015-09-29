@@ -1,0 +1,6 @@
+ups.scripts:
+  js:
+    js/ups.admin.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
