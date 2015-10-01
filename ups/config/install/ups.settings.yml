@@ -2,7 +2,7 @@ access_license: ""
 shipper_number: ""
 user_id: ""
 password: ""
-connection_address: 'https://wwwcie.ups.com/ups.app/xml/'
+connection_address: 'https://www.ups.com/ups.app/xml/'
 services:
   '03': 'UPS Ground'
   '01': 'UPS Next Day Air'

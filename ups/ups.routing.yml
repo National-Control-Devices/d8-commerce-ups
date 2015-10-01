@@ -3,4 +3,4 @@ ups.settings:
   defaults:
     _form: '\Drupal\ups\Form\UPSSettingsForm'
   requirements:
-    _permission: 'configure quotes'
+    _permission: 'configure store'
